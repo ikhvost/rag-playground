@@ -4,8 +4,6 @@ from typing import Dict, List
 
 
 class TextDocumentParser:
-    """Parse text files for RAG system ingestion."""
-
     def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
