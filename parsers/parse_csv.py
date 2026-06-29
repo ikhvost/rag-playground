@@ -2,11 +2,10 @@ import csv
 import hashlib
 import json
 from pathlib import Path
-from typing import Dict, List
 
 
 class CSVParser:
-    def process_document(self, csv_path: str) -> List[Dict]:
+    def process_document(self, csv_path: str) -> list[dict]:
         """Parse the CSV file for RAG processing."""
         path = Path(csv_path)
         chunks = []

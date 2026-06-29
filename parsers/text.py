@@ -1,6 +1,6 @@
 import hashlib
 from pathlib import Path
-from typing import Dict, List
+from this import d
 
 
 class TextDocumentParser:
@@ -8,7 +8,7 @@ class TextDocumentParser:
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
 
-    def process_document(self, file_path: str) -> List[Dict]:
+    def process_document(self, file_path: str) -> list[dict]:
         """Parse file and create chunks."""
         data = self._parse_file(file_path)
         chunks = self._chunk_text(data["content"])
@@ -17,7 +17,7 @@ class TextDocumentParser:
             chunk["document_metadata"] = data["metadata"]
         return chunks
 
-    def _parse_file(self, file_path: str) -> Dict:
+    def _parse_file(self, file_path: str) -> dict:
         """Parse a text file and extract content with metadata."""
         path = Path(file_path)
 
@@ -40,7 +40,7 @@ class TextDocumentParser:
         """Generate a unique document ID based on file path."""
         return hashlib.md5(file_path.encode()).hexdigest()
 
-    def _chunk_text(self, text: str) -> List[Dict]:
+    def _chunk_text(self, text: str) -> list[dict]:
         """Split text into overlapping chunks for RAG processing."""
         chunks = []
         start = 0

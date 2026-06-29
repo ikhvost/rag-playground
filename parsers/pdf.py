@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import Dict, List
 
 import fitz
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -16,7 +15,7 @@ class PDFParser:
             separators=["\n\n", "\n", " ", ""],
         )
 
-    def process_document(self, pdf_path: str) -> List[Dict]:
+    def process_document(self, pdf_path: str) -> list[dict]:
         """Parse a PDF and return chunked text with metadata."""
         text = self._extract_text_from_pdf(pdf_path)
         chunks = self._chunk_text(text)
@@ -50,7 +49,7 @@ class PDFParser:
 
         return text
 
-    def _chunk_text(self, text: str) -> List[str]:
+    def _chunk_text(self, text: str) -> list[str]:
         """Split text into chunks."""
         chunks = self.text_splitter.split_text(text)
         return chunks

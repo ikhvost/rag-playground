@@ -1,6 +1,5 @@
 import hashlib
 from pathlib import Path
-from typing import Dict, List
 
 from docx import Document
 
@@ -10,7 +9,7 @@ class DocxParser:
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
 
-    def process_document(self, file_path: str) -> List[Dict]:
+    def process_document(self, file_path: str) -> list[dict]:
         """parse docx and create chunks"""
         doc_data = self._parse_docx(file_path)
         chunks = self._chunk_text(doc_data["content"])
@@ -20,7 +19,7 @@ class DocxParser:
 
         return chunks
 
-    def _parse_docx(self, file_path: str) -> Dict:
+    def _parse_docx(self, file_path: str) -> dict:
         """Parse a docx file and extract content with metadata."""
         path = Path(file_path)
         doc = Document(file_path)
@@ -45,7 +44,7 @@ class DocxParser:
 
         return {"content": content, "metadata": metadata}
 
-    def _chunk_text(self, text: str) -> List[Dict]:
+    def _chunk_text(self, text: str) -> list[dict]:
         """Split text into overlapping chunks"""
         chunks = []
         start = 0
